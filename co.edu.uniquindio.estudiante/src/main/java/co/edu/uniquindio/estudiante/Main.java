@@ -22,6 +22,8 @@ public class Main {
         //Calcular promedio de la nota 1.
         double promedioNota1 = calcularPromedio(estudiante1.getNota1(), estudiante2.getNota1(), estudiante3.getNota1());
 
+        //Aprobacion del curso
+        aprovacionCurso(calcularDefinitivaEstudiante1, calcularDefinitivaEstudiante2, calcularDefinitivaEstudiante3);
 
         //Imprimiendo en pantalla los resultados para su verificación.
         System.out.println("La definitiva de " + estudiante1.getNombre() + " es " + calcularDefinitivaEstudiante1 + ", la definitiva de " +
@@ -36,7 +38,35 @@ public class Main {
         return promedioValores;
     }
 
-    public static Estudiante crearEstudiante(String nombre, double edad, String correo, int semestre, double nota1,
+    private static void aprovacionCurso(double promUno, double promDos, double promTres)
+    {
+        // VERIFICACIÓN ESTUDIANTE 1
+        if (promUno>=3)
+        {
+            System.out.println("Juan SÍ aprobó el curso");
+        }
+        else{
+            System.out.println("Juan 1 NO aprobó el curso");
+        }
+        // VERIFICACIÓN ESTUDIANTE 2
+        if (promDos>=3)
+        {
+            System.out.println("María 2 SÍ aprobó el curso");
+        }
+        else{
+            System.out.println("María 2 NO aprobó el curso");
+        }
+        // VERIFICACIÓN ESTUDIANTE 3
+        if (promTres>=3)
+        {
+            System.out.println("Pepe 3 SÍ aprobó el curso");
+        }
+        else{
+            System.out.println("Pepe 3 NO aprobó el curso");
+        }
+    }
+
+    public static Estudiante crearEstudiante (String nombre, double edad, String correo, int semestre, double nota1,
                                        double nota2, double nota3){
         Estudiante estudiante = new Estudiante();
         estudiante.setNombre(nombre);
