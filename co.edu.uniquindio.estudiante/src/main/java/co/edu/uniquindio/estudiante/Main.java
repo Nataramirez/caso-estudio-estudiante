@@ -1,5 +1,4 @@
 package co.edu.uniquindio.estudiante;
-import co.edu.uniquindio.estudiante.model.Estudiante;
 
 public class Main {
     public static void main(String[] args) {
@@ -9,7 +8,11 @@ public class Main {
         System.out.println(estudiante1.getNombre());
         System.out.println(estudiante2.getNombre());
         System.out.println(estudiante3.getNombre());
+    }
 
+    private static double calcularPromedio(double valorUno, double valorDos, double valorTres) {
+        double promedioValores = (valorUno + valorDos + valorTres)/3;
+        return promedioValores;
     }
 
     public static Estudiante crearEstudiante (String nombre, double edad, String correo, int semestre, double nota1,
@@ -23,5 +26,7 @@ public class Main {
         estudiante.setNota2(nota2);
         estudiante.setNota3(nota3);
         return estudiante;
+
     }
+
 }
