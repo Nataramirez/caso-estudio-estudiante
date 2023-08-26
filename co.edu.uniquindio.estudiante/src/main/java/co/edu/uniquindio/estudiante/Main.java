@@ -9,6 +9,12 @@ public class Main {
         System.out.println(estudiante1.getNombre());
         System.out.println(estudiante2.getNombre());
         System.out.println(estudiante3.getNombre());
+
+        //Calcular la definitiva de cada estudiante.
+        double calcularDefinitivaEstudiante1 = calcularPromedio(estudiante1.getNota1(), estudiante1.getNota2(), estudiante1.getNota3());
+        double calcularDefinitivaEstudiante2 = calcularPromedio(estudiante2.getNota1(), estudiante2.getNota2(), estudiante2.getNota3());
+        double calcularDefinitivaEstudiante3 = calcularPromedio(estudiante3.getNota1(), estudiante3.getNota2(), estudiante3.getNota3());
+        
     }
 
     private static double calcularPromedio(double valorUno, double valorDos, double valorTres) {
