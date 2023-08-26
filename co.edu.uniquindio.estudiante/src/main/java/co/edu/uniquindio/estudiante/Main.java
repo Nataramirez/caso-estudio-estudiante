@@ -14,7 +14,23 @@ public class Main {
         double calcularDefinitivaEstudiante1 = calcularPromedio(estudiante1.getNota1(), estudiante1.getNota2(), estudiante1.getNota3());
         double calcularDefinitivaEstudiante2 = calcularPromedio(estudiante2.getNota1(), estudiante2.getNota2(), estudiante2.getNota3());
         double calcularDefinitivaEstudiante3 = calcularPromedio(estudiante3.getNota1(), estudiante3.getNota2(), estudiante3.getNota3());
-        
+
+        //Calcular promedio curso.
+        double promedioCurso = calcularPromedio(calcularDefinitivaEstudiante1, calcularDefinitivaEstudiante2, calcularDefinitivaEstudiante3);
+
+        //Calcular promedio de edad.
+        double promedioEdad = calcularPromedio(estudiante1.getEdad(), estudiante2.getEdad(), estudiante3.getEdad());
+
+        //Calcular promedio de la nota 1.
+        double promedioNota1 = calcularPromedio(estudiante1.getNota1(), estudiante2.getNota1(), estudiante3.getNota1());
+
+
+        //Imprimiendo en pantalla los resultados para su verificación.
+        System.out.println("La definitiva de " + estudiante1.getNombre() + " es " + calcularDefinitivaEstudiante1 + ", la definitiva de " +
+                estudiante2.getNombre() + " es " + calcularDefinitivaEstudiante2 + " y la definitiva de " + estudiante3.getNombre() + " es " + calcularDefinitivaEstudiante3);
+        System.out.println("El promedio del curso es " + promedioCurso);
+        System.out.println("El promedio de las edades de los estudiantes del curso es " + promedioEdad);
+        System.out.println("El promedio del curso en la nota 1 es " + promedioNota1);
     }
 
     private static double calcularPromedio(double valorUno, double valorDos, double valorTres) {
