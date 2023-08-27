@@ -32,12 +32,16 @@ public class Main {
         String aprobacionEst2= aprobacionCurso(estudiante2, calcularDefinitivaEstudiante2);
         String aprobacionEst3= aprobacionCurso(estudiante3, calcularDefinitivaEstudiante3);
 
+        //11. Obtener estudiantes con notas mayores a 4
+        String estudiantesNotaMayor4 = obtenerEstudiantesNotasMayor4(estudiante1, estudiante2, estudiante3);
+
         //Imprimiendo en pantalla los resultados para su verificación.
         System.out.println("La definitiva de " + estudiante1.getNombre() + " es " + calcularDefinitivaEstudiante1 + ", la definitiva de " +
                 estudiante2.getNombre() + " es " + calcularDefinitivaEstudiante2 + " y la definitiva de " + estudiante3.getNombre() + " es " + calcularDefinitivaEstudiante3);
         System.out.println("El promedio del curso es " + promedioCurso);
         System.out.println("El promedio de las edades de los estudiantes del curso es " + promedioEdad);
         System.out.println("El promedio del curso en la nota 1 es " + promedioNota1);
+        System.out.println("Los estudiantes con una o más notas mayoes a 4 son "+estudiantesNotaMayor4);
         System.out.println(notaMaximaEst1);
         System.out.println(notaMaximaEst2);
         System.out.println(notaMaximaEst3);
@@ -90,6 +94,52 @@ public class Main {
         return mensaje;
     }
 
+    // Nota mayor a cuadro
+    public static String obtenerEstudiantesNotasMayor4(Estudiante estudiante1,
+                                                       Estudiante estudiante2, Estudiante estudiante3)
+    {
+        String mensaje1= String.valueOf((0));
+        String mensaje2= String.valueOf((0));
+        String mensaje3= String.valueOf((0));
+        String mensajeFinal= String.valueOf((0));
+        double Nota1Est1=estudiante1.getNota1();
+        double Nota2Est1=estudiante1.getNota2();
+        double Nota3Est1=estudiante1.getNota3();
+
+        double Nota1Est2=estudiante2.getNota1();
+        double Nota2Est2=estudiante2.getNota2();
+        double Nota3Est2=estudiante2.getNota3();
+
+        double Nota1Est3=estudiante3.getNota1();
+        double Nota2Est3=estudiante3.getNota2();
+        double Nota3Est3=estudiante3.getNota3();
+
+        if (Nota1Est1>4 || Nota2Est1>4 || Nota3Est1>4)
+        {
+            mensaje1=estudiante1.getNombre();
+        }
+        else
+        {
+            mensaje1=" ";
+        }
+        if (Nota1Est2>4 || Nota2Est2>4 || Nota3Est2>4)
+        {
+            mensaje2=estudiante2.getNombre();
+        }
+        else
+        {
+            mensaje2=" ";
+        }
+        if (Nota1Est3>4 || Nota2Est3>4 || Nota3Est3>4) {
+            mensaje3 = estudiante3.getNombre();
+        }
+        else
+        {
+            mensaje3=" ";
+        }
+        mensajeFinal=mensaje1+" "+mensaje2+" "+mensaje3;
+        return mensajeFinal;
+    }
     public static Estudiante crearEstudiante (String nombre, double edad, String correo, int semestre, double nota1,
                                        double nota2, double nota3){
         Estudiante estudiante = new Estudiante();
