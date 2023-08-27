@@ -22,8 +22,15 @@ public class Main {
         //Calcular promedio de la nota 1.
         double promedioNota1 = calcularPromedio(estudiante1.getNota1(), estudiante2.getNota1(), estudiante3.getNota1());
 
-        //Aprobacion del curso
-        aprovacionCurso(calcularDefinitivaEstudiante1, calcularDefinitivaEstudiante2, calcularDefinitivaEstudiante3);
+        //12. Nota maxima estudiantes
+        String notaMaximaEst1 = notaMaxima(estudiante1);
+        String notaMaximaEst2 = notaMaxima(estudiante2);
+        String notaMaximaEst3 = notaMaxima(estudiante3);
+
+        //8. Aprobacion curso
+        String aprobacionEst1= aprobacionCurso(estudiante1, calcularDefinitivaEstudiante1);
+        String aprobacionEst2= aprobacionCurso(estudiante2, calcularDefinitivaEstudiante2);
+        String aprobacionEst3= aprobacionCurso(estudiante3, calcularDefinitivaEstudiante3);
 
         //Imprimiendo en pantalla los resultados para su verificación.
         System.out.println("La definitiva de " + estudiante1.getNombre() + " es " + calcularDefinitivaEstudiante1 + ", la definitiva de " +
@@ -31,6 +38,12 @@ public class Main {
         System.out.println("El promedio del curso es " + promedioCurso);
         System.out.println("El promedio de las edades de los estudiantes del curso es " + promedioEdad);
         System.out.println("El promedio del curso en la nota 1 es " + promedioNota1);
+        System.out.println(notaMaximaEst1);
+        System.out.println(notaMaximaEst2);
+        System.out.println(notaMaximaEst3);
+        System.out.println(aprobacionEst1);
+        System.out.println(aprobacionEst2);
+        System.out.println(aprobacionEst3);
     }
 
     private static double calcularPromedio(double valorUno, double valorDos, double valorTres) {
@@ -38,32 +51,43 @@ public class Main {
         return promedioValores;
     }
 
-    private static void aprovacionCurso(double promUno, double promDos, double promTres)
+    // 8. Aprobacion curso
+    private static String aprobacionCurso(Estudiante estudiante, double promedio)
     {
-        // VERIFICACIÓN ESTUDIANTE 1
-        if (promUno>=3)
+        String mensaje= String.valueOf((0));
+        if (promedio>=3.0)
         {
-            System.out.println("Juan SÍ aprobó el curso");
+            mensaje=estudiante.getNombre()+" SÍ aprobó el curso";
         }
         else{
-            System.out.println("Juan 1 NO aprobó el curso");
+            mensaje=estudiante.getNombre()+" NO aprobó el cuero";
         }
-        // VERIFICACIÓN ESTUDIANTE 2
-        if (promDos>=3)
+        return mensaje;
+    }
+
+    // 12. Nota maxima
+    private static String notaMaxima(Estudiante estudiante)
+    {
+        String mensaje;
+        double Nota1Est = estudiante.getNota1();
+        double Nota2Est = estudiante.getNota2();
+        double Nota3Est = estudiante.getNota3();
+        double NotaMaxEst = 0;
+
+        if(Nota1Est>Nota2Est)
         {
-            System.out.println("María 2 SÍ aprobó el curso");
+            NotaMaxEst=Nota1Est;
         }
-        else{
-            System.out.println("María 2 NO aprobó el curso");
-        }
-        // VERIFICACIÓN ESTUDIANTE 3
-        if (promTres>=3)
+        else
         {
-            System.out.println("Pepe 3 SÍ aprobó el curso");
+            NotaMaxEst=Nota2Est;
         }
-        else{
-            System.out.println("Pepe 3 NO aprobó el curso");
+        if(Nota3Est>NotaMaxEst)
+        {
+            NotaMaxEst=Nota3Est;
         }
+        mensaje="La nota máxima de "+estudiante.getNombre()+" es "+NotaMaxEst;
+        return mensaje;
     }
 
     public static Estudiante crearEstudiante (String nombre, double edad, String correo, int semestre, double nota1,
