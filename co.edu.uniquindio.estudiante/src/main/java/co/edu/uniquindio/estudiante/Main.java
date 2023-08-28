@@ -26,6 +26,7 @@ public class Main {
         double notaMayorDelCurso = calcularNotaMayorDelCurso(estudiante1, estudiante2, estudiante3);
 
         // 7. Calcular nota menor del curso
+        double notaMenorDelCurso = calcularNotaMenorDelCurso(estudiante1, estudiante2, estudiante3);
 
         //8. Aprobacion curso
         String aprobacionEstudiante1 = aprobacionCurso(estudiante1, calcularDefinitivaEstudiante1);
@@ -33,8 +34,10 @@ public class Main {
         String aprobacionEstudiante3 = aprobacionCurso(estudiante3, calcularDefinitivaEstudiante3);
 
         // 9. Calcular porcentaje de estudiantes que ganaron el curso
+        double porcentajeEstudiantesAprobados = calcularPorcentajeAprobados(calcularDefinitivaEstudiante1, calcularDefinitivaEstudiante2, calcularDefinitivaEstudiante3);
 
         // 10. Calcular porcentaje de estudiantes que perdieron el curso
+        double porcentajeEstudiantesNoAprobados = calcularPorcentajeNoAprobados(calcularDefinitivaEstudiante1, calcularDefinitivaEstudiante2, calcularDefinitivaEstudiante3);
 
         //11. Obtener estudiantes con notas mayores a 4
         String EstudiantesConNotasMayoresA4 = obtenerEstudiantesNotasMayor4(estudiante1, estudiante2, estudiante3);
@@ -59,8 +62,7 @@ public class Main {
     }
 
     private static double calcularPromedio(double valorUno, double valorDos, double valorTres) {
-        double promedioValores = (valorUno + valorDos + valorTres)/3;
-        return promedioValores;
+        return (valorUno + valorDos + valorTres)/3;
     }
 
     public static double notaMayor(double nota1, double nota2, double nota3){
@@ -75,11 +77,27 @@ public class Main {
         double notaMayorEstudiante1 = notaMayor(estudiante1.getNota1(), estudiante1.getNota2(), estudiante1.getNota3());
         double notaMayorEstudiante2 = notaMayor(estudiante2.getNota1(), estudiante2.getNota2(), estudiante2.getNota3());
         double notaMayorEstudiante3 = notaMayor(estudiante3.getNota1(), estudiante3.getNota2(), estudiante3.getNota3());
-        double notaMayorCurso = notaMayor(notaMayorEstudiante1, notaMayorEstudiante2, notaMayorEstudiante3);
-        return notaMayorCurso;
+        return notaMayor(notaMayorEstudiante1, notaMayorEstudiante2, notaMayorEstudiante3);
     }
 
-    // 8. Aprobacion curso
+    public static double notaMenor(double nota1, double nota2, double nota3){
+        double notaMenor = 0;
+        if(nota1 > nota2){
+            notaMenor = nota2;
+        } else {
+            notaMenor = nota1;
+        }
+        if(nota3 < notaMenor) notaMenor = nota3;
+        return notaMenor;
+    }
+
+    public static double calcularNotaMenorDelCurso(Estudiante estudiante1, Estudiante estudiante2, Estudiante estudiante3){
+        double notaMenorEstudiante1 = notaMenor(estudiante1.getNota1(), estudiante1.getNota2(), estudiante1.getNota3());
+        double notaMenorEstudiante2 = notaMenor(estudiante2.getNota1(), estudiante2.getNota2(), estudiante2.getNota3());
+        double notaMenorEstudiante3 = notaMenor(estudiante3.getNota1(), estudiante3.getNota2(), estudiante3.getNota3());
+        return notaMenor(notaMenorEstudiante1, notaMenorEstudiante2, notaMenorEstudiante3);
+    }
+
     private static String aprobacionCurso(Estudiante estudiante, double promedio)
     {
         String mensaje;
@@ -91,6 +109,22 @@ public class Main {
             mensaje=estudiante.getNombre()+" NO aprobó el cuero";
         }
         return mensaje;
+    }
+
+    public static double calcularPorcentajeAprobados (double definitivaEstudiante1, double definitivaEstudiante2, double definitivaEstudiante3){
+        double contador = 0;
+        if(definitivaEstudiante1 >= 3) contador = ++contador;
+        if(definitivaEstudiante2 >= 3) contador = ++contador;
+        if(definitivaEstudiante3 >= 3) contador = ++contador;
+        return ((contador/3)*100);
+    }
+
+    public static double calcularPorcentajeNoAprobados (double definitivaEstudiante1, double definitivaEstudiante2, double definitivaEstudiante3){
+        double contador = 0;
+        if(definitivaEstudiante1 < 3) contador = ++contador;
+        if(definitivaEstudiante2 < 3) contador = ++contador;
+        if(definitivaEstudiante3 < 3) contador = ++contador;
+        return ((contador/3)*100);
     }
 
     public static String obtenerEstudiantesNotasMayor4(Estudiante estudiante1,
@@ -139,7 +173,6 @@ public class Main {
         return mensajeFinal;
     }
 
-    // 12. Nota maxima
     private static String notaMaxima(Estudiante estudiante)
     {
         String mensaje;
